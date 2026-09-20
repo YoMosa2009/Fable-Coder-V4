@@ -1,6 +1,7 @@
 # Fable-Coder V4: 7.6B Generalized Agentic & CyberSec Code LLM
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Fable--Coder--V4-yellow)](https://huggingface.co/MalxTech/Fable-Coder-V4)
 [![Model Size: 7.6B](https://img.shields.io/badge/Parameters-7.6B-green.svg)](https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct)
 [![Format: GGUF Q4_K_M](https://img.shields.io/badge/Format-GGUF%20Q4__K__M-orange.svg)](https://github.com/ggerganov/llama.cpp)
 [![Hardware: NVIDIA A100-SXM4-40GB](https://img.shields.io/badge/Hardware-NVIDIA%20A100--SXM4--40GB-76B900.svg)](https://www.nvidia.com/en-us/data-center/a100/)
@@ -11,6 +12,8 @@
 
 ## 1. Deliverable Verification & Checksums
 
+* **Hugging Face Model Hub**: [MalxTech/Fable-Coder-V4](https://huggingface.co/MalxTech/Fable-Coder-V4)
+* **Direct Binary Download**: [fable-coder-v4-7b.Q4_K_M.gguf (4.36 GiB)](https://huggingface.co/MalxTech/Fable-Coder-V4/resolve/main/fable-coder-v4-7b.Q4_K_M.gguf)
 * **Target Binary**: `fable-coder-v4-7b.Q4_K_M.gguf`
 * **File Size**: `4,683,073,472 bytes` (`4.36 GiB`)
 * **Quantization**: `Q4_K_M` (k-quant Medium via compiled CPU-optimized `llama-quantize`)
@@ -128,6 +131,15 @@ A common concern with fine-tuned models is whether benchmark calibration impairs
 ---
 
 ## 7. Quickstart: Ollama & llama.cpp
+
+### Download Binary from Hugging Face
+```bash
+# Using huggingface-cli / hf:
+hf download MalxTech/Fable-Coder-V4 fable-coder-v4-7b.Q4_K_M.gguf --local-dir .
+
+# Or using curl:
+curl -L -O https://huggingface.co/MalxTech/Fable-Coder-V4/resolve/main/fable-coder-v4-7b.Q4_K_M.gguf
+```
 
 ### Run with Ollama
 ```bash
