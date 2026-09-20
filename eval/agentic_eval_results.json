@@ -1,0 +1,142 @@
+{
+  "timestamp": "2026-09-20 12:02:25",
+  "hardware": "NVIDIA GeForce RTX 3060 12GB VRAM",
+  "models": {
+    "fable-v4": {
+      "model_id": "fable-v4",
+      "model_name": "Fable-Coder V4 (7.6B Replay-LoRA)",
+      "cases": [
+        {
+          "case_id": "case1_rate_limiter",
+          "case_title": "Case 1: Token Bucket Rate Limiter (Algorithms & Concurrency)",
+          "passed": true,
+          "turns_taken": 1,
+          "tool_calls": [
+            "write_file"
+          ],
+          "execution_time_s": 5.49,
+          "diff_lines": 44,
+          "error_trace": ""
+        },
+        {
+          "case_id": "case2_cache_service",
+          "case_title": "Case 2: Cache Concurrency Bug (Runtime Mutation Error)",
+          "passed": false,
+          "turns_taken": 4,
+          "tool_calls": [
+            "write_file",
+            "write_file",
+            "write_file",
+            "write_file"
+          ],
+          "execution_time_s": 27.42,
+          "diff_lines": 78,
+          "error_trace": ""
+        },
+        {
+          "case_id": "case3_security_defense",
+          "case_title": "Case 3: Cybersecurity & Red-Team Defense (SQLi & Injection)",
+          "passed": false,
+          "turns_taken": 4,
+          "tool_calls": [
+            "write_file",
+            "write_file",
+            "run_command",
+            "write_file"
+          ],
+          "execution_time_s": 13.32,
+          "diff_lines": 76,
+          "error_trace": ""
+        },
+        {
+          "case_id": "case4_order_saga",
+          "case_title": "Case 4: Distributed Saga State Machine (Complex Architecture)",
+          "passed": false,
+          "turns_taken": 4,
+          "tool_calls": [
+            "read_file",
+            "write_file",
+            "read_file",
+            "write_file"
+          ],
+          "execution_time_s": 24.84,
+          "diff_lines": 57,
+          "error_trace": ""
+        }
+      ],
+      "pass_rate_pct": 25.0,
+      "avg_turns": 3.25,
+      "total_diff_lines": 255,
+      "total_time_s": 71.07
+    },
+    "qwen2.5-base": {
+      "model_id": "qwen2.5-base",
+      "model_name": "Qwen2.5-Coder-7B-Instruct (Base)",
+      "cases": [
+        {
+          "case_id": "case1_rate_limiter",
+          "case_title": "Case 1: Token Bucket Rate Limiter (Algorithms & Concurrency)",
+          "passed": false,
+          "turns_taken": 4,
+          "tool_calls": [
+            "write_file",
+            "write_file",
+            "write_file",
+            "write_file"
+          ],
+          "execution_time_s": 39.81,
+          "diff_lines": 74,
+          "error_trace": ""
+        },
+        {
+          "case_id": "case2_cache_service",
+          "case_title": "Case 2: Cache Concurrency Bug (Runtime Mutation Error)",
+          "passed": false,
+          "turns_taken": 4,
+          "tool_calls": [
+            "read_file",
+            "write_file",
+            "write_file",
+            "write_file"
+          ],
+          "execution_time_s": 33.07,
+          "diff_lines": 129,
+          "error_trace": ""
+        },
+        {
+          "case_id": "case3_security_defense",
+          "case_title": "Case 3: Cybersecurity & Red-Team Defense (SQLi & Injection)",
+          "passed": true,
+          "turns_taken": 3,
+          "tool_calls": [
+            "read_file",
+            "write_file",
+            "write_file"
+          ],
+          "execution_time_s": 15.02,
+          "diff_lines": 21,
+          "error_trace": ""
+        },
+        {
+          "case_id": "case4_order_saga",
+          "case_title": "Case 4: Distributed Saga State Machine (Complex Architecture)",
+          "passed": false,
+          "turns_taken": 4,
+          "tool_calls": [
+            "read_file",
+            "run_command",
+            "run_command",
+            "run_command"
+          ],
+          "execution_time_s": 43.75,
+          "diff_lines": 0,
+          "error_trace": ""
+        }
+      ],
+      "pass_rate_pct": 25.0,
+      "avg_turns": 3.75,
+      "total_diff_lines": 224,
+      "total_time_s": 131.65
+    }
+  }
+}

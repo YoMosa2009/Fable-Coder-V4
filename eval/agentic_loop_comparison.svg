@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="v4Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+    <linearGradient id="qwenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="560" rx="16" fill="url(#bgGrad)" />
+  <rect x="2" y="2" width="956" height="556" rx="14" fill="none" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Header -->
+  <text x="480" y="46" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" text-anchor="middle">
+    Autonomous Closed-Loop Agentic Evaluation (OpenCode Standard)
+  </text>
+  <text x="480" y="74" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" text-anchor="middle">
+    Local NVIDIA RTX 3060 GPU | Sequential Closed-Loop Sandbox Containment | 4 Real-World Cases
+  </text>
+
+  <!-- Legend -->
+  <g transform="translate(320, 96)">
+    <rect x="0" y="0" width="16" height="16" rx="4" fill="url(#v4Grad)" />
+    <text x="24" y="13" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600">
+      Fable-Coder V4 (7.6B Replay-LoRA)
+    </text>
+    <rect x="250" y="0" width="16" height="16" rx="4" fill="url(#qwenGrad)" />
+    <text x="274" y="13" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600">
+      Qwen2.5-Coder-7B-Instruct (Base)
+    </text>
+  </g>
+
+  <!-- Summary Metric Cards -->
+  <g transform="translate(60, 130)">
+    <!-- Pass Rate Card -->
+    <rect x="0" y="0" width="260" height="74" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="130" y="26" fill="#94a3b8" font-family="sans-serif" font-size="12" text-anchor="middle">Task Pass Rate</text>
+    <text x="75" y="58" fill="#c084fc" font-family="sans-serif" font-size="22" font-weight="700" text-anchor="middle">25.0%</text>
+    <text x="130" y="56" fill="#64748b" font-family="sans-serif" font-size="16" text-anchor="middle">vs</text>
+    <text x="185" y="58" fill="#38bdf8" font-family="sans-serif" font-size="22" font-weight="700" text-anchor="middle">25.0%</text>
+
+    <!-- Mean Turns Card -->
+    <rect x="290" y="0" width="260" height="74" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="420" y="26" fill="#94a3b8" font-family="sans-serif" font-size="12" text-anchor="middle">Mean Turns to Solution</text>
+    <text x="365" y="58" fill="#c084fc" font-family="sans-serif" font-size="22" font-weight="700" text-anchor="middle">3.25</text>
+    <text x="420" y="56" fill="#64748b" font-family="sans-serif" font-size="16" text-anchor="middle">vs</text>
+    <text x="475" y="58" fill="#38bdf8" font-family="sans-serif" font-size="22" font-weight="700" text-anchor="middle">3.75</text>
+
+    <!-- Total Diff Lines Card -->
+    <rect x="580" y="0" width="260" height="74" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="710" y="26" fill="#94a3b8" font-family="sans-serif" font-size="12" text-anchor="middle">Total Valid Diff Lines</text>
+    <text x="655" y="58" fill="#c084fc" font-family="sans-serif" font-size="22" font-weight="700" text-anchor="middle">255</text>
+    <text x="710" y="56" fill="#64748b" font-family="sans-serif" font-size="16" text-anchor="middle">vs</text>
+    <text x="765" y="58" fill="#38bdf8" font-family="sans-serif" font-size="22" font-weight="700" text-anchor="middle">224</text>
+  </g>
+
+  <!-- Case Breakdown Section -->
+  <text x="60" y="240" fill="#cbd5e1" font-family="sans-serif" font-size="15" font-weight="600">Case-by-Case Performance &amp; Loop Efficiency</text>
+
+  <!-- Case 1: Token Bucket Rate Limiter (Algorithms & Concurrency) -->
+  <g transform="translate(60, 265)">
+    <text x="0" y="16" fill="#e2e8f0" font-family="sans-serif" font-size="13" font-weight="500">Case 1: Rate Limiter</text>
+    
+    <!-- Fable Bar -->
+    <rect x="230" y="2" width="240" height="18" rx="4" fill="url(#v4Grad)" opacity="1.0" />
+    <text x="483" y="15" fill="#22c55e" font-family="sans-serif" font-size="12" font-weight="600">PASSED (1 turns, 5.49s)</text>
+
+    <!-- Qwen Bar -->
+    <rect x="580" y="2" width="96" height="18" rx="4" fill="url(#qwenGrad)" opacity="0.4" />
+    <text x="689" y="15" fill="#ef4444" font-family="sans-serif" font-size="12" font-weight="600">FAILED (4 turns, 39.81s)</text>
+  </g>
+
+  <!-- Case 2: Cache Concurrency Bug (Runtime Mutation Error) -->
+  <g transform="translate(60, 325)">
+    <text x="0" y="16" fill="#e2e8f0" font-family="sans-serif" font-size="13" font-weight="500">Case 2: Concurrency Bug</text>
+    
+    <!-- Fable Bar -->
+    <rect x="230" y="2" width="96" height="18" rx="4" fill="url(#v4Grad)" opacity="0.4" />
+    <text x="339" y="15" fill="#ef4444" font-family="sans-serif" font-size="12" font-weight="600">FAILED (4 turns, 27.42s)</text>
+
+    <!-- Qwen Bar -->
+    <rect x="580" y="2" width="96" height="18" rx="4" fill="url(#qwenGrad)" opacity="0.4" />
+    <text x="689" y="15" fill="#ef4444" font-family="sans-serif" font-size="12" font-weight="600">FAILED (4 turns, 33.07s)</text>
+  </g>
+
+  <!-- Case 3: Cybersecurity & Red-Team Defense (SQLi & Injection) -->
+  <g transform="translate(60, 385)">
+    <text x="0" y="16" fill="#e2e8f0" font-family="sans-serif" font-size="13" font-weight="500">Case 3: Cyber Defense</text>
+    
+    <!-- Fable Bar -->
+    <rect x="230" y="2" width="96" height="18" rx="4" fill="url(#v4Grad)" opacity="0.4" />
+    <text x="339" y="15" fill="#ef4444" font-family="sans-serif" font-size="12" font-weight="600">FAILED (4 turns, 13.32s)</text>
+
+    <!-- Qwen Bar -->
+    <rect x="580" y="2" width="240" height="18" rx="4" fill="url(#qwenGrad)" opacity="1.0" />
+    <text x="833" y="15" fill="#22c55e" font-family="sans-serif" font-size="12" font-weight="600">PASSED (3 turns, 15.02s)</text>
+  </g>
+
+  <!-- Case 4: Distributed Saga State Machine (Complex Architecture) -->
+  <g transform="translate(60, 445)">
+    <text x="0" y="16" fill="#e2e8f0" font-family="sans-serif" font-size="13" font-weight="500">Case 4: Order Saga</text>
+    
+    <!-- Fable Bar -->
+    <rect x="230" y="2" width="96" height="18" rx="4" fill="url(#v4Grad)" opacity="0.4" />
+    <text x="339" y="15" fill="#ef4444" font-family="sans-serif" font-size="12" font-weight="600">FAILED (4 turns, 24.84s)</text>
+
+    <!-- Qwen Bar -->
+    <rect x="580" y="2" width="96" height="18" rx="4" fill="url(#qwenGrad)" opacity="0.4" />
+    <text x="689" y="15" fill="#ef4444" font-family="sans-serif" font-size="12" font-weight="600">FAILED (4 turns, 43.75s)</text>
+  </g>
+
+  <!-- Footer -->
+  <line x1="60" y1="510" x2="900" y2="510" stroke="#334155" stroke-width="1" />
+  <text x="480" y="535" fill="#64748b" font-family="sans-serif" font-size="11" text-anchor="middle">
+    Container Sandbox Guardrails Enforced: Restricted FS Tree | 30s Execution Traps | Zero Host Escape Permitted
+  </text>
+</svg>
