@@ -89,9 +89,7 @@ All models were evaluated sequentially on an **NVIDIA GeForce RTX 3060 (12GB VRA
 
 ### Visual Benchmark Comparison
 
-<p align="center">
-  <img src="eval/omniagent_benchmark_comparison.svg" alt="OmniAgent-Bench Performance Evaluation" width="100%">
-</p>
+![OmniAgent-Bench Performance Evaluation](eval/omniagent_benchmark_comparison.svg)
 
 ### Key Architectural Discoveries from OmniAgent-Bench
 1. **Flawless Long-Horizon Architectural Reasoning**:
