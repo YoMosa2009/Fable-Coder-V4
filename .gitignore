@@ -1,0 +1,14 @@
+*.gguf
+*.bin
+*.safetensors
+*.pt
+__pycache__/
+*.py[cod]
+*$py.class
+checkpoints*/
+fable_v3_merged_bf16/
+llama.cpp/
+.venv/
+env/
+.idea/
+.vscode/
