@@ -20,7 +20,12 @@ The fine-tuned model must **decisively outperform the base `google/gemma-4-12B-i
 
 ## 2. Empirical Post-Mortem: What Went Wrong in V1–V4 and How We Prevent It
 
-To guarantee success, every systemic flaw observed from V1 to V4 must be explicitly diagnosed and eradicated.
+To guarantee success, every systemic flaw observed across the lineage must be explicitly diagnosed and eradicated. The official repositories and evaluation reports for each iteration are cataloged below:
+
+* **Fable-Coder V1 Repository:** [`YoMosa2009/MalxLabs-Fable5_QwenCoder`](https://github.com/YoMosa2009/MalxLabs-Fable5_QwenCoder) — *Initial 7B SFT + DPO baseline, audited on RTX 3060.*
+* **Fable-Coder V2 Repository:** [`YoMosa2009/Fable-Coder-V2`](https://github.com/YoMosa2009/Fable-Coder-V2) — *All-linear LoRA expansion, suffered synthetic data poisoning.*
+* **Fable-Coder V3 Repository:** [`YoMosa2009/Fable-Coder-V3`](https://github.com/YoMosa2009/Fable-Coder-V3) — *Frozen MLP LoRA + Anti-Bloat DPO, suffered 6-pair mode collapse.*
+* **Fable-Coder V4 Repository:** [`YoMosa2009/Fable-Coder-V4`](https://github.com/YoMosa2009/Fable-Coder-V4) — *Replay buffer SFT (72.69% OmniAgent), exposed multi-turn sandbox gap (25% closed-loop).*
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -39,19 +44,19 @@ To guarantee success, every systemic flaw observed from V1 to V4 must be explici
 
 ### Detailed Failure Mode Analysis
 
-#### 1. Fable-Coder V1: The Naive SFT Pitfall
+#### 1. Fable-Coder V1 ([YoMosa2009/MalxLabs-Fable5_QwenCoder](https://github.com/YoMosa2009/MalxLabs-Fable5_QwenCoder)): The Naive SFT Pitfall
 - **Observed Behavior:** Strong baseline syntax completion, but erratic tool calling and severe hallucinations on complex distributed architectures.
 - **Root Cause:** Standard SFT with short context lengths (2048 tokens) without loss masking on system and user prompts taught the model to memorize prompt formatting rather than learning conditional response generation.
 
-#### 2. Fable-Coder V2: Synthetic Data Poisoning
+#### 2. Fable-Coder V2 ([YoMosa2009/Fable-Coder-V2](https://github.com/YoMosa2009/Fable-Coder-V2)): Synthetic Data Poisoning
 - **Observed Behavior:** Performance collapsed from 60.0% to 43.3%; bug-fixing capability dropped to 16.7%.
 - **Root Cause:** Unfiltered ingestion of low-quality, synthetically generated code pairs containing subtle logical fallacies, unhandled exceptions, and dead code. The model learned bad coding habits and lost confidence in standard algorithmic patterns.
 
-#### 3. Fable-Coder V3: Catastrophic Few-Pair DPO Collapse
+#### 3. Fable-Coder V3 ([YoMosa2009/Fable-Coder-V3](https://github.com/YoMosa2009/Fable-Coder-V3)): Catastrophic Few-Pair DPO Collapse
 - **Observed Behavior:** Algorithm score dropped from 5/6 (83.3%) to 3/6 (50.0%). Code generations became truncated, and intermediate reasoning vanished.
 - **Root Cause:** Applying Direct Preference Optimization (DPO) over an ultra-small batch of only 6 paired samples repeated across 80 optimization steps with length penalty biases. The DPO loss heavily penalized token length, causing the policy to violently collapse into minimal, clipped outputs that omitted edge-case checks and architectural planning.
 
-#### 4. Fable-Coder V4: The Single-Turn Illusion & Multi-Turn Sandbox Failure
+#### 4. Fable-Coder V4 ([YoMosa2009/Fable-Coder-V4](https://github.com/YoMosa2009/Fable-Coder-V4)): The Single-Turn Illusion & Multi-Turn Sandbox Failure
 - **Observed Behavior:** V4 achieved 72.69% on the static OmniAgent benchmark (outscoring base at 70.72%), passing 100% of single-turn tool, cybersecurity, and long-horizon questions. **However, in the real-world autonomous closed-loop sandbox (`eval/AGENTIC_EVAL_REPORT.md`), it scored only 25.0% (1/4 tasks passed)**:
   - *Case 1 (Rate Limiter):* Passed in Turn 1 (5.49s). Single-turn algorithmic pattern matched.
   - *Case 2 (Cache Concurrency):* Failed after 5 turns. The model mutated a Python dictionary during iteration (`RuntimeError: dictionary changed size during iteration`), failed to understand the traceback returned by `pytest`, and entered a repetitive editing loop.
